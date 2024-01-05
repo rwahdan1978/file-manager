@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 import { env } from 'process';
 
 AWS.config.update({
-        accessKeyId: environment.accessKeyId,
-        secretAccessKey: environment.secretAccessKey,
+        accessKeyId: process.env.accessKeyId,
+        secretAccessKey: process.env.secretAccessKey,
         region: 'ap-south-1'
 });
 
