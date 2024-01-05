@@ -4,17 +4,15 @@ import * as S3 from 'aws-sdk/clients/s3';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
 
-/*
-export const environment = {
+export const environment1 = {
     aws: {
-        accessKeyId: 'AWS_ACCESS_KEY',
-        secretAccessKey: 'AWS_SECRET_KEY',
-        region: 'us-east-1'
+        accessKeyId: environment.accessKeyId,
+        secretAccessKey: environment.secretAccessKey,
+        region: 'ap-south-1'
     }
 }
-*/
 
-const bucket = new S3(environment.aws);
+const bucket = new S3(environment1.aws);
 
 @Injectable({
   providedIn: 'root'
