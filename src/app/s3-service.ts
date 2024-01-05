@@ -12,6 +12,20 @@ AWS.config.update({
 
 const bucket = new S3(AWS.config);
 
+var params = {
+  Bucket: 'angular-upload-files-2023-2024',
+  Key: 'test222.txt',
+  Body: "HelloWorld"
+};
+
+bucket.putObject(params, function (err, res) {
+  if (err) {
+      console.log("Error uploading data: ", err);
+  } else {
+      console.log("Successfully uploaded data to myBucket/myKey");
+  }
+});
+
 @Injectable({
   providedIn: 'root'
 })
