@@ -6,39 +6,13 @@ import { env } from 'process';
 import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 
 
-// AWS.config.update({
-//         accessKeyId: environment.accessKeyId,
-//         secretAccessKey: environment.secretAccessKey,
-//         region: 'ap-south-1',
-//         AWS_SDK_LOAD_CONFIG=1
-// });
-
-let serviceConfigOptions : ServiceConfigurationOptions = {
+AWS.config.update({
         accessKeyId: process.env.accessKeyId,
         secretAccessKey: process.env.secretAccessKey,
-        region: 'ap-south-1',
-};
+        region: 'ap-south-1'
+});
 
-const bucket = new S3(serviceConfigOptions);
-
-//for simplicity. In prod, use loadConfigFromFile, or env variables, or if logged in using 
-
-// var s3 = new AWS.S3({ region: "sa-east-1" }); //region can be set in here
-
-// var params = {
-//   Bucket: 'angular-upload-files-2023-2024',
-//   Key: 'test222.txt',
-//   Body: "HelloWorld"
-// };
-
-// bucket.putObject(params, function (err, res) {
-//   if (err) {
-//       console.log("Error uploading data: ", err);
-//   } else {
-//       console.log("Successfully uploaded data to myBucket/myKey");
-//   }
-// });
-
+const bucket = new S3(AWS.config);
 
 @Injectable({
   providedIn: 'root'
