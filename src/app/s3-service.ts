@@ -14,6 +14,12 @@ export const environment = {
 
 const bucket = new S3(environment.aws);
 
+AWS.config.update({
+  accessKeyId: "MY_KEY_ID",
+  secretAccessKey: "MY_SECRET_KEY",
+  region: "eu-central-1"
+});
+
 @Injectable({
   providedIn: 'root'
 })
