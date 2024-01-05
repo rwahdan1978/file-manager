@@ -50,7 +50,7 @@ export class S3Service {
   loader: EventEmitter<boolean> = new EventEmitter<boolean>()
   currentFolder: string = '';
 
-  constructor() { }
+  constructor() {}
 
   getFolderContent(): Observable<any> {
     return new Observable((observer) => {
