@@ -1,10 +1,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
-import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
 import { env } from 'process';
 import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
+
 
 // AWS.config.update({
 //         accessKeyId: environment.accessKeyId,
@@ -38,6 +38,15 @@ const bucket = new S3(serviceConfigOptions);
 //       console.log("Successfully uploaded data to myBucket/myKey");
 //   }
 // });
+
+
+let serviceConfigOptions : ServiceConfigurationOptions = {
+        accessKeyId: process.env.accessKeyId,
+        secretAccessKey: process.env.secretAccessKey,
+        region: 'ap-south-1',
+};
+
+const bucket = new S3(serviceConfigOptions);
 
 
 @Injectable({

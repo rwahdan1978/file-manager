@@ -1,7 +1,8 @@
+import { env } from 'process';
 export const environment = {
-    
-        region: 'ap-south-1',
+    aws: {
         accessKeyId: '',
         secretAccessKey: '',
-    
+        region: 'ap-south-1'
+    }
 }
