@@ -1,6 +1,7 @@
+import { env } from 'process';
 export const environment = {
-    aws: {
-        access_key: '',
-        secret_key: '',
-    }
+   
+    "access_key": env.access_key;
+    "secret_key": env.secret_key;
+
 }
