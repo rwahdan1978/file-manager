@@ -1,8 +1,16 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
-import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
+import { env } from 'process';
+
+export const environment = {
+    aws: {
+        accessKeyId: process.environment.accessKeyId,
+        secretAccessKey: process.environment.secretAccessKey,
+        region: 'ap-south-1'
+    }
+}
 
 const bucket = new S3(environment.aws);
 
