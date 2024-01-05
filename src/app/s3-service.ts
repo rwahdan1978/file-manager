@@ -2,24 +2,25 @@ import { EventEmitter, Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
-import { env } from 'process';
-import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
+import { environment } from '../environments/environment';
+//import { env } from 'process';
+//import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 
 
-// AWS.config.update({
-//         accessKeyId: environment.accessKeyId,
-//         secretAccessKey: environment.secretAccessKey,
-//         region: 'ap-south-1',
-//         AWS_SDK_LOAD_CONFIG=1
-// });
-
-let serviceConfigOptions : ServiceConfigurationOptions = {
-        accessKeyId: process.env.accessKeyId,
-        secretAccessKey: process.env.secretAccessKey,
+AWS.config.update({
+        accessKeyId: environment.accessKeyId,
+        secretAccessKey: environment.secretAccessKey,
         region: 'ap-south-1',
-};
+});
 
-const bucket = new S3(serviceConfigOptions);
+// let serviceConfigOptions : ServiceConfigurationOptions = {
+//         region: 'ap-south-1',
+//         accessKeyId: process.env.accessKeyId,
+//         secretAccessKey: process.env.secretAccessKey,
+        
+// };
+
+const bucket = new S3(AWS.config);
 
 //for simplicity. In prod, use loadConfigFromFile, or env variables, or if logged in using 
 
