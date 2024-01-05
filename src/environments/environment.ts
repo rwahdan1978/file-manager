@@ -1,4 +1,3 @@
-import { env } from 'process';
 export const environment = {
     aws: {
         accessKeyId: '',

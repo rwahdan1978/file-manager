@@ -14,8 +14,8 @@ import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 // });
 
 let serviceConfigOptions : ServiceConfigurationOptions = {
-        accessKeyId: environment.accessKeyId,
-        secretAccessKey: environment.secretAccessKey,
+        accessKeyId: process.env.accessKeyId,
+        secretAccessKey: process.env.secretAccessKey,
         region: 'ap-south-1',
 };
 
@@ -38,15 +38,6 @@ const bucket = new S3(serviceConfigOptions);
 //       console.log("Successfully uploaded data to myBucket/myKey");
 //   }
 // });
-
-
-let serviceConfigOptions : ServiceConfigurationOptions = {
-        accessKeyId: process.env.accessKeyId,
-        secretAccessKey: process.env.secretAccessKey,
-        region: 'ap-south-1',
-};
-
-const bucket = new S3(serviceConfigOptions);
 
 
 @Injectable({
