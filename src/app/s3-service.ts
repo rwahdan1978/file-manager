@@ -3,28 +3,15 @@ import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
 import { env } from 'process';
+import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 
-AWS.config.update({
-        accessKeyId: process.env.accessKeyId,
-        secretAccessKey: process.env.secretAccessKey,
-        region: 'ap-south-1'
-});
+let serviceConfigOptions : ServiceConfigurationOptions = {
+        accessKeyId: environment.accessKeyId,
+        secretAccessKey: environment.secretAccessKey,
+        region: 'ap-south-1',
+};
 
-const bucket = new S3(AWS.config);
-
-// var params = {
-//   Bucket: 'angular-upload-files-2023-2024',
-//   Key: '5765765.txt',
-//   Body: "HelloWorld"
-// };
-
-// bucket.putObject(params, function (err, res) {
-//   if (err) {
-//       console.log("Error uploading data: ", err);
-//   } else {
-//       console.log("Successfully uploaded data to myBucket/myKey");
-//   }
-// });
+const bucket = new S3(serviceConfigOptions);
 
 @Injectable({
   providedIn: 'root'
