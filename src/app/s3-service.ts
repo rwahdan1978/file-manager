@@ -4,21 +4,13 @@ import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
 import { env } from 'process';
 
-export const environment = {
-    aws: {
-        accessKeyId: process.env.accessKeyId,
-        secretAccessKey: process.env.secretAccessKey,
-        region: 'ap-south-1'
-    }
-}
-
-const bucket = new S3(environment.aws);
-
 AWS.config.update({
-  accessKeyId: process.env.accessKeyId,
-  secretAccessKey: process.env.secretAccessKey,
-  region: "ap-south-1"
+        accessKeyId: environment.accessKeyId,
+        secretAccessKey: environment.secretAccessKey,
+        region: 'ap-south-1'
 });
+
+const bucket = new S3(AWS.config);
 
 @Injectable({
   providedIn: 'root'
