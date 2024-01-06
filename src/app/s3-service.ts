@@ -8,8 +8,8 @@ import { environment } from '../environments/environment';
 
 AWS.config.update({
         region: 'ap-south-1',
-        accessKeyId: process.env.accessKeyId,
-        secretAccessKey: process.env.secretAccessKey
+        accessKeyId: environment.aws.accessKeyId,
+        secretAccessKey: environment.aws.secretAccessKey
 });
 
 const bucket = new S3(AWS.config);
