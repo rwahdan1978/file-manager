@@ -1,6 +1,6 @@
 export const environment = {
     aws: {
-        region: 'ap-south-1',
+        region: '',
         accessKeyId: '',
         secretAccessKey: '',
     }
