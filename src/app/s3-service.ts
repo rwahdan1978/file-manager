@@ -23,7 +23,7 @@ export class S3Service {
 
   bucketName: string = 'angular-upload-files-2023-2024'
   loader: EventEmitter<boolean> = new EventEmitter<boolean>()
-  currentFolder: string = '/';
+  currentFolder: string = './';
 
   constructor() {}
 
