@@ -3,21 +3,13 @@ import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
-import { env } from 'process';
-import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
+//import { env } from 'process';
+//import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 
-// for deployment
-// AWS.config.update({
-//         region: 'ap-south-1',
-//         accessKeyId: process.env.accessKeyId,
-//         secretAccessKey: process.env.secretAccessKey
-// });
-
-//for development
 AWS.config.update({
         region: 'ap-south-1',
-        accessKeyId: environment.aws.accessKeyId,
-        secretAccessKey: environment.aws.secretAccessKey
+        accessKeyId: process.env.accessKeyId,
+        secretAccessKey: process.env.secretAccessKey
 });
 
 const bucket = new S3(AWS.config);
