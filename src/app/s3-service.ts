@@ -2,7 +2,8 @@ import { EventEmitter, Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+
+//import { environment } from '../environments/environment';
 //import { env } from 'process';
 //import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 
