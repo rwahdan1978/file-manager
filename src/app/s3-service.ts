@@ -6,11 +6,10 @@ import { environment } from '../environments/environment';
 //import { env } from 'process';
 //import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 
-
 AWS.config.update({
+        region: 'ap-south-1',
         accessKeyId: process.env.accessKeyId,
-        secretAccessKey: process.env.secretAccessKey,
-        region: 'ap-south-1'
+        secretAccessKey: process.env.secretAccessKey
 });
 
 const bucket = new S3(AWS.config);
