@@ -1,4 +1,4 @@
-export const environment = {
+export const environment1 = {
     aws: {
         accessKeyId: process.env.accessKeyId,
         secretAccessKey: process.env.secretAccessKey,
