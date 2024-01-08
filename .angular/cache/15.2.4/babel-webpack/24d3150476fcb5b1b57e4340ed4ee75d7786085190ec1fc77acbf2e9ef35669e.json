@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { environment1 } from '../environments/environment';\nlet env = environment1;\nexport const environment = {\n  aws: {\n    production: true,\n    accessKeyId: process.env.accessKeyId,\n    secretAccessKey: process.env.secretAccessKey,\n    region: 'ap-south-1'\n  }\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

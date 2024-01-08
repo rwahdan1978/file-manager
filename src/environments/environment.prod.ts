@@ -1,3 +1,7 @@
+import { environment1 } from '../environments/environment';
+
+let env = environment1
+
 export const environment = {
     aws: {
         production: true,

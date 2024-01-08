@@ -1,7 +1,7 @@
 export const environment1 = {
     aws: {
-        accessKeyId: process.env.accessKeyId,
-        secretAccessKey: process.env.secretAccessKey,
+        accessKeyId: "AKIAT4QNA4ENJRYQU7VA",
+        secretAccessKey: "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",
         region: 'ap-south-1'
     }
 }

@@ -3,8 +3,7 @@ import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment.prod';
-//import { env } from 'process';
-import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
+//import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 
 let env = environment
 
@@ -24,7 +23,7 @@ export class S3Service {
 
   bucketName: string = 'angular-upload-files-2023-2024';
   loader: EventEmitter<boolean> = new EventEmitter<boolean>();
-  currentFolder: string = 'properties2023';
+  currentFolder: string = '';
 
   constructor() {}
 
