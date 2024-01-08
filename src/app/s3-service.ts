@@ -2,10 +2,10 @@ import { EventEmitter, Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment.prod';
+import { environment1 } from '../environments/environment';
 //import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 
-let env = environment
+//let env = environment1
 
 AWS.config.update({
         accessKeyId: process.env.accessKeyId,
