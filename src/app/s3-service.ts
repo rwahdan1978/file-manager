@@ -2,15 +2,15 @@ import { EventEmitter, Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
-import { environment1 } from '../environments/environment';
-//import { ServiceConfigurationOptions } from 'aws-sdk/lib/service';
 
-//let env = environment1
+const accessKeyId = process.env.accessKeyId;
+const secretAccessKey = process.env.secretAccessKey;
+const region = 'ap-south-1';
 
 AWS.config.update({
-        accessKeyId: process.env.accessKeyId,
-        secretAccessKey: process.env.secretAccessKey,
-        region: 'ap-south-1'
+  accessKeyId: accessKeyId,
+  secretAccessKey: secretAccessKey,
+  region: region
 });
 
 const bucket = new S3(AWS.config);
