@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environments = {\n  aws: {\n    production: false,\n    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,\n    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,\n    AWS_DEFAULT_REGION: process.env.AWS_DEFAULT_REGION\n  }\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
