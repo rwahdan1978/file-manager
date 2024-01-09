@@ -20,20 +20,21 @@ export class S3Service {
 
   bucketName: string = 'angular-upload-files-2023-2024';
   loader: EventEmitter<boolean> = new EventEmitter<boolean>();
-  currentFolder: string = 'properties2023/';
+  currentFolder: string = 'FamilyDocuments/';
 
   constructor() {}
 
   getFolderContent(): Observable<any> {
     return new Observable((observer) => {
-      this.loader.next(true);
+      this.loader.next(false);
       bucket.listObjectsV2({ Bucket: this.bucketName, Prefix: this.currentFolder, Delimiter: '/' }, (err: AWS.AWSError, data: S3.ListObjectsV2Output) => {
-        this.loader.next(true);
+        this.loader.next(false);
         console.log(data)
         if (err) {
           observer.error(err);
         }
         else {
+
           let list: any[] = [];
           list = list.concat(data.CommonPrefixes?.map(m => { return { name: m.Prefix, contentType: 'folder' } }));
           list = list.concat(data.Contents?.filter(m => m.Key != this.currentFolder).map(m => { return { name: m.Key, contentType: 'file', modifiedTime: m.LastModified?.toDateString() } }));
