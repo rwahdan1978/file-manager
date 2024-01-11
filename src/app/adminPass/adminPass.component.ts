@@ -39,6 +39,7 @@ export class AdminPassComponent implements OnInit {
       localStorage.setItem('active', "1");
       this.isActive = localStorage.getItem("active");
       this.first = 1;
+      this.adminPassForm.reset();
       this.router.navigate(['/']);
     }
   }
