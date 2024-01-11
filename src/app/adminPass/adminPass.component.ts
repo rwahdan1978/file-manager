@@ -24,14 +24,7 @@ export class AdminPassComponent implements OnInit {
               }
 
   ngOnInit() {
-    this.router.events
-      .pipe(
-        filter((e) => e instanceof NavigationEnd && !e.url.startsWith('claim')),
-        first()
-      )
-      .subscribe(() => {
-        localStorage.removeItem('lastTab');
-      });
+   
   }
 
   onSubmit(): void {
