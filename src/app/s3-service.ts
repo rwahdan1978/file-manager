@@ -29,14 +29,15 @@ export class S3Service {
       this.loader.next(false);
       bucket.listObjectsV2({ Bucket: this.bucketName, Prefix: this.currentFolder, Delimiter: '/' }, (err: AWS.AWSError, data: S3.ListObjectsV2Output) => {
         this.loader.next(false);
-        console.log(data)
         if (err) {
           observer.error(err);
         }
         else {
 
           let list: any[] = [];
+          //folders --- ?.replace(this.currentFolder,"")
           list = list.concat(data.CommonPrefixes?.map(m => { return { name: m.Prefix, contentType: 'folder' } }));
+          //files inside folder
           list = list.concat(data.Contents?.filter(m => m.Key != this.currentFolder).map(m => { return { name: m.Key, contentType: 'file', modifiedTime: m.LastModified?.toDateString() } }));
           observer.next(list);
         }
@@ -96,3 +97,7 @@ export class S3Service {
   }
   
 }
+function replace(Key: string | undefined): any {
+  throw new Error('Function not implemented.');
+}
+

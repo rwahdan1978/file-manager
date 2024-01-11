@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6 text-end">
                 <button (click)="back()" class="btn btn-primary btn-sm"
-                    *ngIf="s3Service.currentFolder!=''">Back</button>
+                    *ngIf="s3Service.currentFolder !='FamilyDocuments/'">Back</button>
                 
                 <button class="btn btn-primary btn-sm" style="margin-left: 5px;" routerLink="/new-folder">Create Folder</button>
                 
@@ -22,7 +22,7 @@
                 <a href="javascript:;" (click)="viewFile(content.name)" *ngIf="content.contentType=='file'"
                     class="list-group-item list-group-item-action list-group-item-secondary">
                     <i class="fa fa-solid fa-file"></i>
-                    {{content.name}}
+                    {{content.name.replace(this.s3Service.currentFolder,"")}}
                     <span style="float:right">
                         {{content.modifiedTime}}
                     </span>
