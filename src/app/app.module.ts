@@ -7,14 +7,16 @@ import { FileListComponent } from './file-list/file-list.component';
 import { UploadComponent } from './upload/upload.component';
 import { NewFolderComponent } from './new-folder/new-folder.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminPassComponent } from './adminPass/adminPass.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     FileListComponent,
     UploadComponent,
-    NewFolderComponent
-  ],
+    NewFolderComponent,
+      AdminPassComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

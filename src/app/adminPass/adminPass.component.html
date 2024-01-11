@@ -1,0 +1,16 @@
+<div *ngIf="first === 0" class="card bg-secondary text-white">
+  <div class="card-header">
+      Enter Admin Password to proceed!
+  </div>
+  <div class="card-body">
+    
+      <form [formGroup]="adminPassForm" (ngSubmit)="onSubmit()" class="form-inline">
+          <div class="form-group mb-2">
+              <label class="sr-only">Admin Password</label>
+              <input type="password" formControlName="thepass" class="form-control col-sm-4">
+          </div>
+          <button type="submit" [disabled]="!adminPassForm.valid" class="btn btn-primary mb-2">Enter Site</button>
+      </form>
+  </div>
+</div>
+<router-outlet *ngIf="thepass === 'Fatima@2020'"></router-outlet>
