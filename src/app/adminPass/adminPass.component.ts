@@ -12,6 +12,8 @@ import { filter, first } from 'rxjs';
 export class AdminPassComponent implements OnInit {
   thepass: any;
   first: any = 0;
+  public isActive: any;
+
   adminPassForm: FormGroup = this.formBuilder.group({
     thepass: ['', Validators.required]
   });
@@ -24,20 +26,25 @@ export class AdminPassComponent implements OnInit {
               }
 
   ngOnInit() {
-   
+    
+      this.isActive = localStorage.getItem("active");
+      this.first = 0;
+
   }
 
   onSubmit(): void {
     this.thepass = this.adminPassForm.controls['thepass'].value;
-    if (this.thepass === "Fatima@2020" && this.first === 0) 
+    if (this.thepass === "Fatima@2020") 
     {  
-    this.first = 1;
-    this.router.navigate(['/']);
+      localStorage.setItem('active', "1");
+      this.isActive = localStorage.getItem("active");
+      this.first = 1;
+      this.router.navigate(['/']);
     }
-
   }
 
   goBack(){
+    this.isActive = localStorage.removeItem('active');
     window.open(
       'https://ramiwahdan.com/#/',
       '_self' // <- This is what makes it open in a new window.

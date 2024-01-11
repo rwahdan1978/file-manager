@@ -7,6 +7,7 @@ import { LocationStrategy } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'drive-management';
   isLoading: boolean = false;
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       history.pushState(null, '', window.location.href);  
       this.location.onPopState(() => {
       history.pushState(null, '', window.location.href);
-  });  
+  });
   }
   ngOnInit(): void {
     this.s3Service.loader.subscribe((m: boolean) => {
