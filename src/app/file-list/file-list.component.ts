@@ -18,7 +18,8 @@ export class FileListComponent implements OnInit {
 
   back(): void {
     //---    Document/One/Two/
-    let arr = this.s3Service.currentFolder.split('/');
+    let thepath = "FamilyDocuments/" + this.s3Service.currentFolder
+    let arr = thepath.split('/');
     arr.splice(arr.length - 2, 1);
     let folderName = arr.join('/');
     this.openFolder(folderName);

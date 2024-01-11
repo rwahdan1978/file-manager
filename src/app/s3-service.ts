@@ -36,7 +36,7 @@ export class S3Service {
 
           let list: any[] = [];
           //folders --- ?.replace(this.currentFolder,"")
-          list = list.concat(data.CommonPrefixes?.map(m => { return { name: m.Prefix, contentType: 'folder' } }));
+          list = list.concat(data.CommonPrefixes?.map(m => { return { name: m.Prefix?.replace(this.currentFolder,""), contentType: 'folder' } }));
           //files inside folder
           list = list.concat(data.Contents?.filter(m => m.Key != this.currentFolder).map(m => { return { name: m.Key, contentType: 'file', modifiedTime: m.LastModified?.toDateString() } }));
           observer.next(list);
