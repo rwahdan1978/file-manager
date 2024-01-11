@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { S3Service } from '../s3-service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { LocationStrategy } from '@angular/common';
+import { filter, first } from 'rxjs';
 
 @Component({
   selector: 'my-app-adminPass',
@@ -14,9 +15,23 @@ export class AdminPassComponent implements OnInit {
   adminPassForm: FormGroup = this.formBuilder.group({
     thepass: ['', Validators.required]
   });
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router,
+              private location: LocationStrategy) { 
+                history.pushState(null, '', window.location.href);  
+                this.location.onPopState(() => {
+                history.pushState(null, '', window.location.href);
+});  
+              }
 
   ngOnInit() {
+    this.router.events
+      .pipe(
+        filter((e) => e instanceof NavigationEnd && !e.url.startsWith('claim')),
+        first()
+      )
+      .subscribe(() => {
+        localStorage.removeItem('lastTab');
+      });
   }
 
   onSubmit(): void {
@@ -27,6 +42,13 @@ export class AdminPassComponent implements OnInit {
     this.router.navigate(['/']);
     }
 
+  }
+
+  goBack(){
+    window.open(
+      'https://ramiwahdan.com/#/',
+      '_self' // <- This is what makes it open in a new window.
+    );
   }
 
 }
