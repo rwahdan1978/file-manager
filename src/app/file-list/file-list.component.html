@@ -19,19 +19,26 @@
         <hr>
         <div class="list-group mt-2" *ngIf="contentList.length>0">
             <ng-container *ngFor="let content of contentList">
-                <a href="javascript:;" (click)="viewFile(content.name)" *ngIf="content.contentType=='file'"
+                <h5 *ngIf="content.contentType=='file'"
                     class="list-group-item list-group-item-action list-group-item-secondary">
                     <i class="fa fa-solid fa-file"></i>
                     {{content.name.replace(this.s3Service.currentFolder,"")}}
                     <span style="float:right">
                         {{content.modifiedTime}}
+                        <button class="btn btn-primary btn-sm" (click)="viewFile(content.name)" type="submit">Download</button>
+                        <button class="btn btn-primary btn-sm" style="margin-left: 2px;" (click)="deleteFile(content.name)" type="submit">Delete</button>
                     </span>
-                </a>
-                <a href="javascript:;" (click)="openFolder(content.name)" *ngIf="content.contentType=='folder'"
-                    class="list-group-item list-group-item-action list-group-item-primary">
+                </h5>
+                
+                <h5 *ngIf="content.contentType=='folder'"
+                    class="list-group-item list-group-item-action list-group-item-secondary">
                     <i class="fa fa-solid fa-folder"></i>
                     {{content.name}}
-                </a>
+                    <span style="float:right">
+                    <button class="btn btn-primary btn-sm" (click)="openFolder(content.name)" *ngIf="content.contentType=='folder'" type="submit">View Files</button>
+                    <button class="btn btn-primary btn-sm" style="margin-left: 2px;" (click)="deleteFolder(content.name)" type="submit">Delete</button>
+                    </span>
+                </h5>
             </ng-container>
         </div>
         <div class="mt-2" *ngIf="contentList.length==0">

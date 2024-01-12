@@ -1,6 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { S3Content } from '../s3-content';
 import { S3Service } from '../s3-service';
+import { environments } from 'src/environments/enviroment';
+import * as AWS from 'aws-sdk/global';
+import * as S3 from 'aws-sdk/clients/s3';
+
+AWS.config.update({
+  accessKeyId: environments.aws.AWS_ACCESS_KEY_ID,
+  secretAccessKey: environments.aws.AWS_SECRET_ACCESS_KEY,
+  region: environments.aws.AWS_DEFAULT_REGION ////'ap-south-1'
+});
+
+var s3 = new S3(AWS.config);
 
 @Component({
   selector: 'app-file-list',
@@ -36,6 +47,39 @@ export class FileListComponent implements OnInit {
     this.s3Service.getUrl(key).subscribe(m => {
       window.open(m, '_blank');
     })
+  }
+
+  deleteFile(key: string){
+    var params = {
+      Bucket: 'angular-upload-files-2023-2024', 
+      Key: key
+    };
+
+    s3.deleteObject(params, function(err, data) {
+      if (err) console.log(err)     
+      else 
+      {
+        window.location.reload();
+      }   
+  });
+
+  }
+
+  deleteFolder(key: string){
+    let theKey = "FamilyDocuments/" + key
+    var params = {
+      Bucket: 'angular-upload-files-2023-2024', 
+      Key: theKey
+    };
+
+    s3.deleteObject(params, function(err, data) {
+      if (err) console.log(err)     
+      else 
+      {
+        window.location.reload();
+      }   
+  });
+
   }
 
 }
