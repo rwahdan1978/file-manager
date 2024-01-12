@@ -36,7 +36,7 @@
                     {{content.name}}
                     <span style="float:right">
                     <button class="btn btn-primary btn-sm" (click)="openFolder(content.name)" *ngIf="content.contentType=='folder'" type="submit">View Files</button>
-                    <button class="btn btn-primary btn-sm" style="margin-left: 2px;" (click)="deleteFolder(content.name)" type="submit">Delete</button>
+                    <button class="btn btn-primary btn-sm" style="margin-left: 2px;" *ngIf="content.contentType=='folder'" (click)="deleteFolder(content.name)" type="submit">Delete</button>
                     </span>
                 </h5>
             </ng-container>
