@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavigationEnd, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { LocationStrategy } from '@angular/common';
-import { filter, first } from 'rxjs';
+import { environments } from 'src/environments/enviroment';
 
 @Component({
   selector: 'my-app-adminPass',
@@ -13,6 +13,7 @@ export class AdminPassComponent implements OnInit {
   thepass: any;
   first: any = 0;
   public isActive: any;
+  //public thepass: environments.aws.adminPass
 
   adminPassForm: FormGroup = this.formBuilder.group({
     thepass: ['', Validators.required]
@@ -34,7 +35,7 @@ export class AdminPassComponent implements OnInit {
 
   onSubmit(): void {
     this.thepass = this.adminPassForm.controls['thepass'].value;
-    if (this.thepass === "Fatima@2020") 
+    if (this.thepass === environments.aws.adminPass) 
     {  
       localStorage.setItem('active', "1");
       this.isActive = localStorage.getItem("active");

@@ -9,7 +9,7 @@ AWS.config.update({
   secretAccessKey: environments.aws.AWS_SECRET_ACCESS_KEY,
   region: environments.aws.AWS_DEFAULT_REGION ////'ap-south-1'
 });
-
+ 
 const bucket = new S3(AWS.config);
 
 @Injectable({
