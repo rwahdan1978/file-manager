@@ -48,7 +48,7 @@ export class AdminPassComponent implements OnInit {
   goBack(){
     this.isActive = localStorage.removeItem('active');
     window.open(
-      'https://ramiwahdan.com/#/',
+      'https://hspa2024.azurewebsites.net/#/',
       '_self' // <- This is what makes it open in a new window.
     );
   }
